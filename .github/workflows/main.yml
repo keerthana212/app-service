@@ -1,4 +1,4 @@
-name: Publish 🚀
+name: Publish 
 
 on:
   workflow_dispatch:
@@ -29,7 +29,11 @@ jobs:
         run: npm run build
         
       - name: Publish
-        run: cp -R ./dist/. ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        run: |
+          mkdir temp
+          cp -R ./dist/. temp
+          cp -R temp/. ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          rm -rf temp
         
       - name: Deployment
         uses: azure/webapps-deploy@v2
