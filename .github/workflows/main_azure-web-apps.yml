@@ -31,5 +31,5 @@ jobs:
         with:
           app-name: 'azure-web-apps'
           slot-name: 'production'
-          publish-profile: $
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_168F58DE3FB8404B869DB5AB680C9E6E }}
           package: ./dist/azure_angular
