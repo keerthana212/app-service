@@ -7,7 +7,7 @@ on:
       - main
 
 env:
-  AZURE_WEBAPP_NAME: angular-app
+  AZURE_WEBAPP_NAME: keer-angular-app
   AZURE_WEBAPP_PACKAGE_PATH: "./dist"
 
 jobs:
@@ -20,13 +20,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '16'
           
       - name: Install dependencies
         run: npm install
       
       - name: Build
-        run: npm run build -- --prod
+        run: npm run build
         
       - name: Publish
         run: cp -R ./dist ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
