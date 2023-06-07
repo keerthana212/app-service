@@ -29,7 +29,9 @@ jobs:
         run: npm run build
         
       - name: Publish
-        run: cp -R ./dist ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        run: |
+          mkdir ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          cp -R ./dist/* ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         
       - name: Deployment
         uses: azure/webapps-deploy@v2
